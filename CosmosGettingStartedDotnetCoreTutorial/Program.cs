@@ -63,7 +63,7 @@ namespace CosmosGettingStartedDotnetCoreTutorial
             await this.CreateDatabaseAsync();
             await this.CreateContainerAsync();
             await this.AddItemsToContainerAsync();
-            await this.QueryItemsAsync();
+            await this.QueryItemsAsync(UserName);
             await this.ReplaceFamilyItemAsync();
             await this.DeleteFamilyItemAsync();
             await this.DeleteDatabaseAndCleanupAsync();
