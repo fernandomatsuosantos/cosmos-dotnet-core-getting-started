@@ -34,7 +34,7 @@ namespace CosmosGettingStartedDotnetCoreTutorial
 
                 //Console.Write("Enter the LastName to query: ");
                 //string UserName = Console.ReadLine();
-                string Request.Form["UserName"];
+                string UserName = Request.Form["UserName"];
 
                 await p.GetStartedDemoAsync(UserName);
             }
