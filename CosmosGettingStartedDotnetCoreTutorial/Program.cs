@@ -196,7 +196,7 @@ namespace CosmosGettingStartedDotnetCoreTutorial
         */
         private async Task QueryItemsAsync(string UserName)
         {
-            var sqlQueryText = "SELECT * FROM c WHERE c.LastName = '{UserName}'";
+            var sqlQueryText = "SELECT * FROM c WHERE c.LastName = " + UserName + "'";
 
             Console.WriteLine("Running query: {0}\n", sqlQueryText);
 
