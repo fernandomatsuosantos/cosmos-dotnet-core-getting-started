@@ -1,47 +1,41 @@
----
-languages:
-- csharp
-products:
-- azure
-- azure-cosmos-db
-- dotnet
-page_type: sample
-description: "This sample shows you how to use the Azure Cosmos DB service to store and access data from a .NET Core console application."
----
+AspnetO Blog Series: SQL Injections: What is SQL Injection and How to Prevent it?
 
-# Developing a .NET Core console app using Azure Cosmos DB
-This sample shows you how to use the Azure Cosmos DB service to store and access data from a .NET Core console application.
+------------------------------------------------------------------------------------
+AspnetO - Quick Way To Learn Asp.net [http://www.aspneto.com]
 
-For a complete end-to-end walkthrough of creating this application, please refer to the [full tutorial on the Azure Cosmos DB documentation page](https://aka.ms/CosmosDotnetCoreGetStarted).
+Source:
+1. http://www.aspneto.com/sql-injections-what-is-sql-injection-and-how-to-prevent-it.html
 
-## Running this sample
+You may also like:
+1. http://www.aspneto.com/how-to-get-connection-string-connect-sql-database-in-asp-net.html
+2. http://www.aspneto.com/add-insert-edit-update-delete-show-gridview-data-in-asp-net-c-vb.html
+3. http://www.aspneto.com/tooltip-example-show-hide-hint-help-text-using-css3-transition.html
+4. http://www.aspneto.com/oop-concepts-object-oriented-programming-concepts-with-examples.html
+5. http://www.aspneto.com/100-frequently-asked-interview-questions-on-asp-net-sql-server-oop-concepts.html
+------------------------------------------------------------------------------------
 
-1. Before you can run this sample, you must have the following prerequisites:
-	- An active Azure Cosmos DB account - If you don't have an account, refer to the [Create a database account](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-a-database-account) article.
-	- Visual Studio 2015 (or higher).
+This set of modules that is intended to provide small working examples on programming languages like 
+Asp.net, C#/Vb, HTML, CSS, JavaScript, jQuery etc or any other third party APIs.
 
-1. Clone this repository using Git for Windows (http://www.git-scm.com/), or download the zip file.
+The modules strive to be simple, well documented and modification friendly to help developers quickly learn 
+their inner workings, with a little reading and hands on experience. Don't be shy if you're just starting, 
+as precisely because of that you will know the questions and problems of a newcomer better than a seasoned developer!
 
-1. From Visual Studio, open the **CosmosGettingStartedDotnetCoreTutorial.sln** file from the root directory.
+	-----------
+	How to use?
+	-----------
 
-1. In Visual Studio Build menu, select **Build Solution** (or Press **Ctrl+Shift+B**). 
+	To run this tutorial, you can follow these easy steps..
 
-1. Retrieve the URI and PRIMARY KEY (or SECONDARY KEY) values from the Keys blade of your Azure Cosmos DB account in the Azure portal. For more information on obtaining endpoint & keys for your Azure Cosmos DB account refer to [View, copy, and regenerate access keys and passwords](https://docs.microsoft.com/azure/cosmos-db/manage-account#keys)
+	1. Extract project anywhere to your computer's physical location
+	2. Double click on "SqlInjectionExample.sln" & Execute "sqlscript.sql" in new database or existing database if any.
+	3. You will see the list of page(s), open it and follow sample code snippet
+	4. Make necessary changes (most likely connection string) if applicable & Run it
+	5. That's it! You are now ready to go.. ;)
 
-If you don't have an account, see [Create a database account](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-a-database-account) to set one up.
+AspnetO is a place where we share, you learn! For more tutorials on web designing and development, 
+you can visit us at http://www.aspneto.com. If you find a problem, incorrect code format, 
+obsolete or improper code or such, please let us know by contacting us via email 
+from http://www.aspneto.com/contact-us/ page with a proper subject. 
 
-1. In the **Program.cs** file, located in the src directory, find **EndPointUri** and **PrimaryKey** and replace the placeholder values with the values obtained for your account.
-
-    <add key="EndPointUri" value="~your Azure Cosmos DB endpoint here~" />
-    <add key="PrimaryKey" value="~your auth key here~" />
-
-1. You can now run and debug the application locally by pressing **F5** in Visual Studio.
-
-## About the code
-The code included in this sample is intended to get you quickly started with a .NET Core console application that connects to Azure Cosmos DB.
-
-## More information
-
-- [Azure Cosmos DB Documentation](https://docs.microsoft.com/azure/cosmos-db/index)
-- [Azure Cosmos DB .NET SDK for SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet)
-- [Azure Cosmos DB .NET SDK Reference Documentation](https://docs.microsoft.com/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)
+Suggestions, corrections and new thread demands are most welcome. Please, No spam. We'll keep track on you! :)
