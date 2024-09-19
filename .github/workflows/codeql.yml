@@ -87,3 +87,4 @@ jobs:
       uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: '/home/runner/work/cosmos-dotnet-core-getting-started/results/csharp.sarif' 
+        category: "/language:csharp/"
