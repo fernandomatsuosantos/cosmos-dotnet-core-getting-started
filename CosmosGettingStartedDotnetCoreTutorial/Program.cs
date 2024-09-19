@@ -31,7 +31,11 @@ namespace CosmosGettingStartedDotnetCoreTutorial
             {
                 Console.WriteLine("Beginning operations...\n");
                 Program p = new Program();
-                await p.GetStartedDemoAsync();
+
+                Console.Write("Enter the LastName to query: ");
+                string UserName = Console.ReadLine();
+
+                await p.GetStartedDemoAsync(UserName);
             }
             catch (CosmosException de)
             {
@@ -52,7 +56,7 @@ namespace CosmosGettingStartedDotnetCoreTutorial
         /*
             Entry point to call methods that operate on Azure Cosmos DB resources in this sample
         */
-        public async Task GetStartedDemoAsync()
+        public async Task GetStartedDemoAsync(string UserName)
         {
             // Create a new instance of the Cosmos Client
             this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey);
@@ -190,13 +194,9 @@ namespace CosmosGettingStartedDotnetCoreTutorial
         /*
         Run a query (using Azure Cosmos DB SQL syntax) against the container
         */
-        private async Task QueryItemsAsync()
+        private async Task QueryItemsAsync(string UserName)
         {
-
-            Console.WriteLine("Type any name:  ");
-            string name = Console.ReadLine();
-
-            var sqlQueryText = "SELECT * FROM c WHERE c.LastName = @name";
+            var sqlQueryText = "SELECT * FROM c WHERE c.LastName = @UserName";
 
             Console.WriteLine("Running query: {0}\n", sqlQueryText);
 
