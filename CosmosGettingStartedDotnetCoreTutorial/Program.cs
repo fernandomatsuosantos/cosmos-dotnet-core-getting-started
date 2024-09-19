@@ -194,7 +194,7 @@ namespace CosmosGettingStartedDotnetCoreTutorial
         {
 
             Console.WriteLine("Type any name:  ");
-            sting name = Console.ReadLine();
+            string name = Console.ReadLine();
 
             var sqlQueryText = "SELECT * FROM c WHERE c.LastName = @name";
 
