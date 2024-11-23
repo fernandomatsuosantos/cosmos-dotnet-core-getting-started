@@ -17,13 +17,12 @@ jobs:
         # Find directories containing .csproj or .sln files
         projects=$(find . -type f \( -name "*.csproj" -o -name "*.sln" \) -exec dirname {} \; | sort -u)
         # Convert newlines to JSON array syntax for GitHub Actions matrix
-        projects_json=$(echo "$projects" | jq -R . | jq -s .)
-        projects_json='{projects_json:'${projects_json}'}'
-        echo 'projects_json=$projects_json' >> '$GITHUB_OUTPUT'
-        echo $projects_json
+        projects_array=$(echo "$projects" | jq -R . | jq -s .)
+        echo 'projects_array=$projects_array' >> '$GITHUB_OUTPUT'
+        echo $projects_array
 
     outputs:
-      projects_json: ${{ steps.matrix_setup.outputs.projects_json }}
+      projects_array: ${{ steps.matrix_setup.outputs.projects_array }}
 
 
   codeql-analysis:
@@ -31,7 +30,7 @@ jobs:
     needs: discover_projects
     strategy:
       matrix:
-        project-path: ${{ fromJson(needs.discover_projects.outputs.projects_json) }}
+        project-path: ${{ needs.discover_projects.outputs.projects_array }}
 
     permissions:
       actions: read
