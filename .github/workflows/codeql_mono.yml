@@ -22,7 +22,8 @@ jobs:
         # Convert newlines to JSON array syntax for GitHub Actions matrix
         projects_array=$(echo "$projects" | jq -R . | jq -s .)
         echo $projects_array
-        echo "projects_list=$projects_array" >> $GITHUB_OUTPUT
+        #echo "projects_list=$projects_array" >> $GITHUB_OUTPUT
+        echo "projects_list=$(echo "$projects_array" | jq -c .)" >> $GITHUB_OUTPUT
 
 
 
