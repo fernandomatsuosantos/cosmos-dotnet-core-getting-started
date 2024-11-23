@@ -19,7 +19,7 @@ jobs:
         # Convert newlines to JSON array syntax for GitHub Actions matrix
         projects_json=$(echo "$projects" | jq -R . | jq -s .)
         echo 'projects_json={\"projects_json\":$projects_json}' >> '$GITHUB_OUTPUT'
-        echo $projects_json
+        echo 'projects_json={\"projects_json\":$projects_json}'
 
     outputs:
       projects_json: ${{ steps.matrix_setup.outputs.projects_json }}
