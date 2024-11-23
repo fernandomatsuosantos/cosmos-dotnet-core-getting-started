@@ -23,7 +23,7 @@ jobs:
         #projects_array=$(echo "$projects" | jq -R . | jq -s .)
         projects_array="MATEUS"
         echo $projects_array
-        echo 'projects_list=$projects_array' >> '$GITHUB_OUTPUT'
+        echo "projects_list=$projects_array" >> $GITHUB_OUTPUT
 
 
 
