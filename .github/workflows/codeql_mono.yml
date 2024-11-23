@@ -7,6 +7,9 @@ jobs:
   discover_projects:
     runs-on: ubuntu-latest
 
+    outputs:
+        projects_list2: ${{ steps.matrix_setup.outputs.projects_list }}
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -23,8 +26,6 @@ jobs:
         echo 'projects_list=$projects_array' >> '$GITHUB_OUTPUT'
 
 
-    outputs:
-      projects_list2: ${{ steps.matrix_setup.outputs.projects_list }}
 
   codeql-analysis:
     runs-on: ubuntu-latest
