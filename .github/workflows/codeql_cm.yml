@@ -20,7 +20,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: cm
+      - name: install codeql
         shell: bash
         run: |
           # Download CodeQL for mac with cURL
@@ -36,5 +36,10 @@ jobs:
           codeql resolve languages
           codeql resolve qlpacks
           #on code repo
+
+      - name: create database
+        shell: bash
+        run: |
+          cd $GITHUB_WORKSPACE
           codeql database create codeqldb --language=csharp --build-mode=none
         
