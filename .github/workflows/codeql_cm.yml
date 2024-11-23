@@ -42,11 +42,12 @@ jobs:
           export PATH=$PATH:$HOME/codeql/codeql
           cd $GITHUB_WORKSPACE
           codeql database create codeqldb --language=csharp --build-mode=none
-          zip -r result.zip .
+          zip -r result.zip ./zip
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
         with:
           name: result
-          path: $GITHUB_WORKSPACE/result.zip
+          path: ${{ github.workspace }}/zip
           retention-days: 2
+          overwrite: true
