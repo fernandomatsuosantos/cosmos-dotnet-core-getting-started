@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: List C# Projects
       run: |
@@ -18,8 +18,8 @@ jobs:
         # Convert newlines to JSON array syntax for GitHub Actions matrix
         projects_json=$(echo "$projects" | jq -R . | jq -s .)
         echo $projects_json
-        # # Output the JSON array for use in the matrix
-        # echo "PROJECT_PATHS=$projects_json" >> $GITHUB_ENV
+        # Output the JSON array for use in the matrix
+        echo 'PROJECT_PATHS=$projects_json' >> $GITHUB_ENV
 
 #     - name: Setup project paths for matrix
 #       id: matrix-setup
@@ -42,7 +42,7 @@ jobs:
 
 #     steps:
 #     - name: Checkout repository
-#       uses: actions/checkout@v3
+#       uses: actions/checkout@v4
 
 #     - name: Initialize CodeQL
 #       uses: github/codeql-action/init@v2
