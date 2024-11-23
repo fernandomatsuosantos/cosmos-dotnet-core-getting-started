@@ -18,11 +18,11 @@ jobs:
         projects=$(find . -type f \( -name "*.csproj" -o -name "*.sln" \) -exec dirname {} \; | sort -u)
         # Convert newlines to JSON array syntax for GitHub Actions matrix
         projects_json=$(echo "$projects" | jq -R . | jq -s .)
-        echo 'projects_json_array=$projects_json' >> '$GITHUB_OUTPUT'
+        echo 'projects_json={\"projects_json\":$projects_json}' >> '$GITHUB_OUTPUT'
         echo $projects_json
 
     outputs:
-      project_paths: ${{ steps.matrix_setup.outputs.projects_json_array }}
+      projects_json: ${{ steps.matrix_setup.outputs.projects_json }}
 
 
   codeql-analysis:
@@ -30,7 +30,7 @@ jobs:
     needs: discover_projects
     strategy:
       matrix:
-        project-path: ${{ fromJson(needs.discover_projects.outputs.project_paths) }}
+        project-path: ${{ fromJson(needs.discover_projects.outputs.projects_json) }}
 
     permissions:
       actions: read
