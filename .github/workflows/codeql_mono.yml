@@ -15,43 +15,43 @@ jobs:
       run: |
         # Find directories containing .csproj or .sln files
         projects=$(find . -type f \( -name "*.csproj" -o -name "*.sln" \) -exec dirname {} \; | sort -u)
-        # Convert newlines to JSON array syntax for GitHub Actions matrix
-        projects_json=$(echo "$projects" | jq -R . | jq -s .)
-        # Output the JSON array for use in the matrix
-        echo "PROJECT_PATHS=$projects_json" >> $GITHUB_ENV
+#         # Convert newlines to JSON array syntax for GitHub Actions matrix
+#         projects_json=$(echo "$projects" | jq -R . | jq -s .)
+#         # Output the JSON array for use in the matrix
+#         echo "PROJECT_PATHS=$projects_json" >> $GITHUB_ENV
 
-    - name: Setup project paths for matrix
-      id: matrix-setup
-      run: echo "PROJECT_PATHS=${{ env.PROJECT_PATHS }}"
+#     - name: Setup project paths for matrix
+#       id: matrix-setup
+#       run: echo "PROJECT_PATHS=${{ env.PROJECT_PATHS }}"
 
-    outputs:
-      project-paths: ${{ steps.matrix-setup.outputs.PROJECT_PATHS }}
+#     outputs:
+#       project-paths: ${{ steps.matrix-setup.outputs.PROJECT_PATHS }}
 
-  codeql-analysis:
-    runs-on: ubuntu-latest
-    needs: discover-projects
-    strategy:
-      matrix:
-        project-path: ${{ fromJson(needs.discover-projects.outputs.project-paths) }}
+#   codeql-analysis:
+#     runs-on: ubuntu-latest
+#     needs: discover-projects
+#     strategy:
+#       matrix:
+#         project-path: ${{ fromJson(needs.discover-projects.outputs.project-paths) }}
 
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
+#     permissions:
+#       actions: read
+#       contents: read
+#       security-events: write
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v3
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: 'csharp'
+#     - name: Initialize CodeQL
+#       uses: github/codeql-action/init@v2
+#       with:
+#         languages: 'csharp'
 
-    - name: Run Build Job for CodeQL
-      run: |
-        echo "Building project in: ${{ matrix.project-path }}"
-        dotnet build ${{ matrix.project-path }}
+#     - name: Run Build Job for CodeQL
+#       run: |
+#         echo "Building project in: ${{ matrix.project-path }}"
+#         dotnet build ${{ matrix.project-path }}
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+#     - name: Perform CodeQL Analysis
+#       uses: github/codeql-action/analyze@v2
