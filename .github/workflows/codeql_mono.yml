@@ -17,8 +17,9 @@ jobs:
         projects=$(find . -type f \( -name "*.csproj" -o -name "*.sln" \) -exec dirname {} \; | sort -u)
         # Convert newlines to JSON array syntax for GitHub Actions matrix
         projects_json=$(echo "$projects" | jq -R . | jq -s .)
-        # Output the JSON array for use in the matrix
-        echo "PROJECT_PATHS=$projects_json" >> $GITHUB_ENV
+        echo $projects_json
+        # # Output the JSON array for use in the matrix
+        # echo "PROJECT_PATHS=$projects_json" >> $GITHUB_ENV
 
 #     - name: Setup project paths for matrix
 #       id: matrix-setup
