@@ -35,11 +35,11 @@ jobs:
           # Check the configuration
           codeql resolve languages
           codeql resolve qlpacks
-          #on code repo
 
       - name: create database
         shell: bash
         run: |
+          export PATH=$PATH:$HOME/codeql/codeql
           cd $GITHUB_WORKSPACE
           codeql database create codeqldb --language=csharp --build-mode=none
         
