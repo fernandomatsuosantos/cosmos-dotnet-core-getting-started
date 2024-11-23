@@ -22,7 +22,7 @@ jobs:
 
     - name: Setup project paths for matrix
       id: matrix-setup
-      run: echo "PROJECT_PATHS=${{ $GITHUB_ENV['PROJECT_PATHS'] }}"
+      run: echo "PROJECT_PATHS=${{ env.PROJECT_PATHS }}"
 
     outputs:
       project-paths: ${{ steps.matrix-setup.outputs.PROJECT_PATHS }}
