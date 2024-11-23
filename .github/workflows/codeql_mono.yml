@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-        projects_list2: ${{ steps.matrix_setup.outputs.projects_list }}
+        projects_list: ${{ steps.matrix_setup.outputs.projects_list }}
 
     steps:
     - name: Checkout repository
@@ -35,7 +35,7 @@ jobs:
 
     - name: Show variable
       run: |
-        echo ${{ needs.discover_projects.outputs.projects_list2 }}
+        echo ${{ needs.discover_projects.outputs.projects_list }}
 
 
 #   codeql-analysis:
