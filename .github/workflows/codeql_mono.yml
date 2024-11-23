@@ -21,9 +21,9 @@ jobs:
         # Output the JSON array for use in the matrix
         echo 'PROJECT_PATHS=$projects_json' >> $GITHUB_ENV
 
-#     - name: Setup project paths for matrix
-#       id: matrix-setup
-#       run: echo "PROJECT_PATHS=${{ env.PROJECT_PATHS }}"
+    - name: Setup project paths for matrix
+      id: matrix-setup
+      run: echo 'PROJECT_PATHS=${{ env.PROJECT_PATHS }}'
 
 #     outputs:
 #       project-paths: ${{ steps.matrix-setup.outputs.PROJECT_PATHS }}
