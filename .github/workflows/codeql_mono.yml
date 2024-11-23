@@ -32,24 +32,24 @@ jobs:
       matrix:
         project-path: ${{ fromJson(needs.discover_projects.outputs.project_paths) }}
 
-#     permissions:
-#       actions: read
-#       contents: read
-#       security-events: write
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
 
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v4
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-#     - name: Initialize CodeQL
-#       uses: github/codeql-action/init@v2
-#       with:
-#         languages: 'csharp'
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: 'csharp'
 
-#     - name: Run Build Job for CodeQL
-#       run: |
-#         echo "Building project in: ${{ matrix.project-path }}"
-#         dotnet build ${{ matrix.project-path }}
+    - name: Run Build Job for CodeQL
+      run: |
+        echo "Building project in: ${{ matrix.project-path }}"
+        dotnet build ${{ matrix.project-path }}
 
-#     - name: Perform CodeQL Analysis
-#       uses: github/codeql-action/analyze@v2
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
