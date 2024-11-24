@@ -52,7 +52,7 @@ jobs:
         build-mode: 'none'
         config: |
           paths:
-            - SqlInjectionExample
+            - ${{ matrix.project_path }}
 
 
     - name: Perform CodeQL Analysis
