@@ -49,7 +49,7 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: 'csharp'
-        build-mode: 'none'
+        build-mode: 'autobuild'
         config: |
           paths:
             - ${{ matrix.project_path }}
