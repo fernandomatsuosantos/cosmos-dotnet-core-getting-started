@@ -59,7 +59,7 @@ jobs:
     - name: Build
       run: |
         cd ./csharp_examples/${{ matrix.project_path }}
-        dotnet build
+        dotnet build /p:EnableWindowsTargeting=true
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
