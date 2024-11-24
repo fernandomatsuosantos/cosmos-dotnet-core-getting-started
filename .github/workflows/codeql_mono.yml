@@ -30,7 +30,7 @@ jobs:
     needs: discover_projects
     strategy:
       matrix:
-        project-path: ${{ needs.discover_projects.outputs.projects_list }}
+        project-path: ${{ fromJSON(needs.discover_projects.outputs.projects_list) }}
       max-parallel: 3 # Adjust parallelism limit
 
 
