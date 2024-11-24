@@ -18,12 +18,12 @@ jobs:
       id: matrix_setup
       run: |
         # Find directories containing .csproj or .sln files
-        projects=$(find . -type f \( -name "*.csproj" -o -name "*.sln" \) -exec dirname {} \; | sort -u)
+        projects=$(find . -type f \( -name "*.csproj" -o -name "*.sln" \) -exec dirname {} \; | sort -u | head -10)
         # Convert newlines to JSON array syntax for GitHub Actions matrix
-        projects_array=$(echo "$projects" | jq -R . | jq -s .)
+        projects_array=$(echo "$projects" | jq -R . | jq -s . | jq -c .)
         echo $projects_array
         #echo "projects_list=$projects_array" >> $GITHUB_OUTPUT
-        echo "projects_list=$(echo "$projects_array" | jq -c .)" >> $GITHUB_OUTPUT
+        echo "projects_list=$(echo "$projects_array")" >> $GITHUB_OUTPUT
 
   codeql-analysis:
     runs-on: ubuntu-latest
