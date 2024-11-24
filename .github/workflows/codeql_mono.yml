@@ -18,7 +18,7 @@ jobs:
       id: matrix_setup
       run: |
         # Find directories containing .csproj or .sln files
-        projects=$(find . -type f \( -name "*.csproj" -o -name "*.sln" \) -exec dirname {} \; | sort -u | head -10)
+        projects=$(find . -type f \( -name "*.csproj" -o -name "*.sln" \) -exec dirname {} \; | sort -u | head -5)
         # Convert newlines to JSON array syntax for GitHub Actions matrix
         projects_array=$(echo "$projects" | jq -R . | jq -s . | jq -c .)
         echo "projects_list=$(echo "$projects_array")" >> $GITHUB_OUTPUT
@@ -30,7 +30,7 @@ jobs:
 
     strategy:
       matrix:
-        project-path: ${{ fromJSON(needs.discover_projects.outputs.projects_list) }}
+        project_path: ${{ fromJSON(needs.discover_projects.outputs.projects_list) }}
       max-parallel: 3 # Adjust parallelism limit
 
     permissions:
@@ -50,6 +50,9 @@ jobs:
       with:
         languages: 'csharp'
         build-mode: 'none'
+        config: |
+          paths:
+            - ${{ matrix.project_path }}
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
