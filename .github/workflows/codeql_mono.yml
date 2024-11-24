@@ -31,7 +31,7 @@ jobs:
     strategy:
       matrix:
         project-path: ${{ fromJSON(needs.discover_projects.outputs.projects_list) }}
-        max-parallel: 3 # Adjust parallelism limit
+      max-parallel: 3 # Adjust parallelism limit
 
     permissions:
       # required for all workflows
