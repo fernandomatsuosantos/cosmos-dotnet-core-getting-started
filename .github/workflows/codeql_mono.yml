@@ -58,7 +58,7 @@ jobs:
 
     - name: Build
       run: |
-        cd ./${{ matrix.project_path }}
+        cd ./csharp_examples/${{ matrix.project_path }}
         dotnet build
 
     - name: Perform CodeQL Analysis
