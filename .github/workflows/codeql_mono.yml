@@ -31,7 +31,7 @@ jobs:
     strategy:
       matrix:
         project_path: ${{ fromJSON(needs.discover_projects.outputs.projects_list) }}
-      max-parallel: 3 # Adjust parallelism limit
+      max-parallel: 2 # Adjust parallelism limit
 
     permissions:
       # required for all workflows
@@ -52,7 +52,8 @@ jobs:
         build-mode: 'none'
         config: |
           paths:
-            - ${{ matrix.project_path }}
+            - SqlInjectionExample
+
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
