@@ -25,44 +25,33 @@ jobs:
         #echo "projects_list=$projects_array" >> $GITHUB_OUTPUT
         echo "projects_list=$(echo "$projects_array" | jq -c .)" >> $GITHUB_OUTPUT
 
-
-
   codeql-analysis:
     runs-on: ubuntu-latest
     needs: discover_projects
-  
+    strategy:
+      matrix:
+        project-path: ${{ needs.discover_projects.outputs.projects_list }}
+      max-parallel: 3 # Adjust parallelism limit
+
+
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    - name: Show variable
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: 'csharp'
+
+    - name: Run Build Job for CodeQL
       run: |
-        echo ${{ needs.discover_projects.outputs.projects_list }}
+        echo "Building project in: ${{ matrix.project-path }}"
+        dotnet build ${{ matrix.project-path }}
 
-
-#   codeql-analysis:
-#     runs-on: ubuntu-latest
-#     needs: discover_projects
-#     strategy:
-#       matrix:
-#         project-path: ${{ needs.discover_projects.outputs.projects_array }}
-
-#     permissions:
-#       actions: read
-#       contents: read
-#       security-events: write
-
-#     steps:
-#     - name: Checkout repository
-#       uses: actions/checkout@v4
-
-#     - name: Initialize CodeQL
-#       uses: github/codeql-action/init@v2
-#       with:
-#         languages: 'csharp'
-
-#     - name: Run Build Job for CodeQL
-#       run: |
-#         echo "Building project in: ${{ matrix.project-path }}"
-#         dotnet build ${{ matrix.project-path }}
-
-#     - name: Perform CodeQL Analysis
-#       uses: github/codeql-action/analyze@v2
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
